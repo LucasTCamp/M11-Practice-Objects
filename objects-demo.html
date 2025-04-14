@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Testing Ground</title>
+    <script src="objects-demo.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+<body>
+    <h1>Objects in JavaScript</h1>
+    <h2>Topics to cover:
+        <ol>
+            <li>Object Syntax</li>
+            <pre><code class="language-javascript">
+                let user = {     // an object
+                    name: "John",  // by key "name" store value "John"
+                    age: 30        // by key "age" store value 30
+                  };
+                  </code></pre>
+            <li>Types of properties</li>
+            <pre><code class="language-javascript">
+                user.isAdmin = true; // booleans are allowed too.
+                  </code></pre>
+            <li>removing properties</li>
+            <pre><code class="language-javascript">
+                delete user.age;
+                  </code></pre>
+            <li>multi-word properties [square brackets]</li>
+            <pre><code class="language-javascript">
+                // this would give a syntax error
+                    user.likes birds = true
+                // DO THIS INSTEAD
+                    user["likes birds"] = true;
+
+                // OR WHEN INITIALLY CREATING THE OBJECT, DO THIS:
+                    let user = {
+                    name: "John",
+                    age: 30,
+                    "likes birds": true  // multiword property name must be quoted
+                  };   
+                  </code></pre>
+            <li>commas on the last property (highly recommended)</li>
+            <pre><code class="language-javascript">
+                let user = {
+                    name: "John",
+                    age: 30, // helps in rearranging code, so you don't have to write new commas after every edit.
+                  } 
+                  </code></pre>
+            <li>dot access versus square bracket access</li>
+            <pre><code class="language-javascript">
+                let user = {};
+
+                // set a property's value
+                user["likes birds"] = true;
+                
+                // get a property's value.
+                alert(user["likes birds"]); // true
+                
+                // delete a property.
+                delete user["likes birds"];
+                  </code></pre>
+                <!-- <li>Computed Properties</li>
+                <pre><code class="language-javascript">
+                    let fruit = prompt("Which fruit to buy?", "apple");
+
+                    let bag = {
+                    [fruit]: 5, // the name of the property is taken from the variable fruit
+                    };
+
+                    alert( bag.apple ); // 5 if fruit="apple"
+                    
+                    // We can do more complex expressions inside square brackets:
+                    let fruit = 'apple';
+                    let bag = {
+                    [fruit + 'Computers']: 5 // bag.appleComputers = 5
+                    };
+                </code></pre> -->
+            <li>Property Value shorthand</li>
+            <pre><code class="language-javascript">
+                function makeUser(name, age) {
+                    return {
+                      name: name,
+                      age: age,
+                      // ...other properties
+                    };
+                  }
+                  
+                  let user = makeUser("John", 30);
+                  alert(user.name); // John
+
+
+                // Instead of name: name, we can do this:
+                function makeUser(name, age) {
+                    return {
+                      name, // same as name: name
+                      age,  // same as age: age
+                      // ...
+                    };
+                  }
+
+                // OR EVEN DO THIS: 
+                let user = {
+                    name,  // same as name:name
+                    age: 30
+                  };
+            </code></pre>
+            <li>Testing for property existence with the "in" keyword</li>
+            <pre><code class="language-javascript">
+                let user = { name: "John", age: 30 };
+                
+                // Use quoted strings to search for properties explicitly.
+                alert( "age" in user ); // true, user.age exists
+                alert( "blabla" in user ); // false, user.blabla doesn't exist
+
+                // CHECK FOR VARIABLE DATA
+                let user = { age: 30 };
+
+                let key = "age";
+                alert( key in user ); // true, property "age" exists
+            </code></pre>
+            <li>Looping through an Object using "for..in" loop</li>
+            <pre><code class="language-javascript">
+                Syntax:
+                for (key in object) {
+                    // executes the body for each key among object properties
+                  }
+            </code></pre>
+            <pre><code class="language-javascript">
+                // Output all properties of user:
+                
+                let user = {
+                    name: "John",
+                    age: 30,
+                    isAdmin: true
+                  };
+                  
+                  for (let key in user) {
+                    // keys
+                    alert( key );  // name, age, isAdmin
+                    // values for the keys
+                    alert( user[key] ); // John, 30, true
+                  }
+            </code></pre>
+        </ol>
+    </h2>
+    <h2>PRACTICE TIME</h2>
+    <pre><code class="language-javascript">
+      <ol>
+        <li>1. Create an empty object 'user'</li>
+        <li>2. Add the property 'name' with the value '____'</li>
+        <li>3. Add the property 'surname' with the value '____'</li>
+        <li>4. Change the value of the 'name' to '____'</li>
+        <li>5. Remove the property 'name' from the object.</li>
+      </ol>
+  </code></pre>
+</body>
+</html>

@@ -5,9 +5,23 @@ const outputDiv = document.getElementById("output"); // keep this to output to p
 // 2. with the properties: difficulty, soundOn, and maxPlayers. 
 // 3. Loop through the object and 
 // 4. display the results to the page.
+let gameSettings = {
+  difficulty: "Hard",
+  soundOn: true,
+  maxPlayers: 3,
+  toggleSound: function () {
+    this.soundOn = !this.soundOn;
+  }
+}
 
 function problem1() {
   // Output results in a new result variable. use let result = ______
+  let result = ""
+  for (let key in gameSettings) {
+    if (typeof gameSettings[key] !== "function")  {
+      result += `${key}: ${gameSettings[key]} <br>`;
+    }
+  }
   outputDiv.innerHTML = result; // keep this to output to page.
 }
 
@@ -19,6 +33,7 @@ function problem1() {
 
 function problem2() {
   // Add ONE line IN THIS function that calls toggleSound method.
+  gameSettings.toggleSound();
   outputDiv.innerHTML = `<strong>Sound is now:</strong> ${gameSettings.soundOn}`;
 }
 
@@ -31,6 +46,13 @@ function problem2() {
   function problem3() {
     // keep this if else block to help with overwriting the old size. 
     // You will need to have created a newSize variable with the use of a prompt.
+    let newSize = prompt("Give me a size for the smoothie:")
+    let smoothie = {
+      flavor: "Triple Berry Oat",
+      hasProtein: true,
+      size: newSize,
+    }
+    
     if (newSize && newSize.trim() !== "") {
       smoothie.size = newSize.trim();
     }

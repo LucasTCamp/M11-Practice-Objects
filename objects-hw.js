@@ -68,13 +68,17 @@ function problem2() {
 // 5. displays a formatted string to the page like:
 // 6. "Name: [name], Battery Life: [batteryLife] hrs, Wireless: [true/false]".
 
-
+let gadget = {
+  name: "Smartwatch",
+  batteryLIfe: "24 hrs",
+  isWireless: "true",
+}
 function printGadgetSpecs(gadget) {
-  return // insert `output string here` // hint: use backticks and ${object.property} references.
+  return `Name: ${gadget.name}, Battery Life: ${gadget.batteryLife}, Wireless: ${gadget.isWireless}`;   // insert `output string here` // hint: use backticks and ${object.property} references.
 }
 
 function problem4() {
-  outputDiv.innerHTML = `<strong>Gadget Specs:</strong> ${printGadgetSpecs(Gadget)}`;
+  outputDiv.innerHTML = `<strong>Gadget Specs:</strong> ${printGadgetSpecs(gadget)}`;
 }
 
 // Problem 5
@@ -88,7 +92,12 @@ function problem4() {
 
 
 function problem5() {
-  
+  let garden = {
+    plants: ["daisy", "rose", "tulip"],
+    addPlant: function(plant) {
+      this.plants.push(newPlant);
+    }
+  }
   // This helps with keeping your text entry box clean after every input.
   // No need to change this, just keep the variable and object naming in mind.
   const newPlant = document.getElementById("plantInput").value;
@@ -122,13 +131,24 @@ function problem6() {
   //     playlist.addSong(song.trim());
   //   }
   // }
-
-
+  let playlist = {
+    name: "Liked Songs",
+    songList: [],
+    addSong: function(song) {
+      this.songList.push(song);
+    }
+  }
+  for (let i = 0; i < 2; i++) {
+    const song = prompt(`Song? ${i + 1}:`);
+    if (song && song.trim() !== "") {
+      playlist.addSong(song.trim());
+    }
+  }
   // This will output to the page for you:
   // Just fill in the PLACEHOLDERs with the correct info.
-  let result = `<strong>Playlist: PLACEHOLDER </strong><ul>`;
-  for (let song of PLACEHOLDER) {
-    result += `<li>${PLACEHOLDER}</li>`;
+  let result = `<strong>Playlist: ${playlist.name} </strong><ul>`;
+  for (let song of playlist.songList) {
+    result += `<li>${song}</li>`;
   }
   result += "</ul>";
   outputDiv.innerHTML = result;
